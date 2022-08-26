@@ -7,6 +7,7 @@ spells.each do |spell|
   # make a request to the endpoint for the individual spell:
   response = RestClient.get "https://www.dnd5eapi.co/api/spells/#{spell}"
   # create a spell in the database using the data from this hash:
+  spell_hash = JSON.parse(response)
   Spell.create(
     name: spell_hash["name"],
     level: spell_hash["level"],
